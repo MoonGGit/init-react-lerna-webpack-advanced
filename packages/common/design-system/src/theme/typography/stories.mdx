@@ -1,0 +1,31 @@
+import { Typeset, Meta } from '@storybook/addon-docs/blocks';
+import { FONT_SIZE, FONT_WEIGHT, FONT_FAMILY } from '.';
+import { css, react } from '@emotion/react';
+
+<Meta title="Typography" />
+
+# Typography
+
+<br />
+<br />
+
+<div>
+	{FONT_FAMILY.map(fontFamily => (
+		<>
+			<h2>
+				Font Family: <span style={{ fontSize: 'inherit', color: '#ff5555' }}>{fontFamily}</span>
+			</h2>
+			{Object.entries(FONT_WEIGHT).map(([key, value]) => (
+				<>
+					Font Weight: {key} {value}
+					<Typeset
+						fontSizes={Object.values(FONT_SIZE)}
+						fontWeight={value}
+						fontFamily={fontFamily}
+						sampleText="어제는 갔고, 내일은 아직 오지 않았으니, 오늘을 즐기자! (Feat. 테레사)"
+					/>
+				</>
+			))}
+		</>
+	))}
+</div>

@@ -1,0 +1,45 @@
+{
+	"env": {
+		"node": true,
+		"browser": true,
+		"es2021": true
+	},
+	"extends": [
+		"eslint:recommended", // eslint-plugin-react
+		"plugin:react/recommended", // eslint-plugin-react
+		"plugin:@typescript-eslint/recommended-requiring-type-checking", // @typescript-eslint/eslint-plugin
+		"plugin:prettier/recommended" // eslint-plugin-prettier + eslint-config-prettier
+	],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"tsconfigRootDir": "./",
+		"project": "./tsconfig.json",
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": "latest",
+		"sourceType": "module"
+	},
+	"ignorePatterns": ["dist/", "node_modules/"],
+	"plugins": ["react", "@typescript-eslint", "prettier"],
+	"rules": {
+		"@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+		"react/no-unknown-property": ["error", { "ignore": ["css"] }],
+		"react/jsx-first-prop-new-line": [1, "multiline"],
+		"react/jsx-max-props-per-line": [1, { "maximum": 1, "when": "multiline" }],
+		"react/prop-types": "off",
+		"react/react-in-jsx-scope": ["off"],
+		"no-restricted-imports": [
+			"error",
+			{
+				"paths": [
+					{
+						"name": "react",
+						"importNames": ["default"],
+						"message": "import React from 'react' makes bundle size larger."
+					}
+				]
+			}
+		]
+	}
+}
